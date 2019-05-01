@@ -1,4 +1,4 @@
-package top.cildhdi.faceage.face_age;
+package top.cildhdi.face_age;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
