@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import './function_item.dart';
@@ -21,7 +22,7 @@ class FunctionItems extends StatelessWidget {
               "    上传照片到服务器进行面部年龄识别，服务器在识别完成后会立即删除您的照片，仅会保留您设置的个人昵称以及识别结果。",
           actionName: "进入",
           action: () {
-            showDialog(
+            showCupertinoDialog(
                 context: context,
                 builder: (context) {
                   return NickNameInputDialog();
