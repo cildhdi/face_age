@@ -85,7 +85,7 @@ class _NickNameInputDialogState extends State<NickNameInputDialog> {
                       ),
                     ),
               onPressed: () {
-                if (!_validating) {
+                if (!_validating && _textEditingController.text.isNotEmpty) {
                   setState(() {
                     _validating = true;
                   });
