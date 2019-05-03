@@ -1,4 +1,4 @@
-import 'package:face_age/components/face_age_recognize.dart';
+import 'package:face_age/pages/face_age_recognize_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
