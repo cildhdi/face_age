@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../config.dart' as config;
 
 class NickNameInputDialog extends StatefulWidget {
   @override
@@ -14,6 +17,33 @@ class _NickNameInputDialogState extends State<NickNameInputDialog> {
   void dispose() {
     _textEditingController.dispose();
     super.dispose();
+  }
+
+  void _check() async {
+    final text = _textEditingController.text;
+    if (text.isEmpty) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: const Text("昵称不能为空"),
+        duration: const Duration(seconds: 2),
+      ));
+    } else {
+      http.Response response = await http.get("${config.nickNameUrl}$text");
+      if (response.statusCode == 200) {
+        int code = json.decode(response.body)["errcode"];
+        switch (code) {
+          case 0:
+            config.setNickName(text);
+            Navigator.of(context).pop("昵称设置成功");
+            break;
+          case 2:
+            Navigator.of(context).pop("昵称已存在");
+            break;
+          default:
+        }
+      } else {
+        Navigator.of(context).pop("网络或服务器异常");
+      }
+    }
   }
 
   @override
@@ -59,6 +89,7 @@ class _NickNameInputDialogState extends State<NickNameInputDialog> {
                   setState(() {
                     _validating = true;
                   });
+                  _check();
                 }
               },
             )

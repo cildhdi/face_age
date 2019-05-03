@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const server = "http://cildhdi.top";
+const server = "http://www.cildhdi.top";
 
-final String nickNameUrl = "$server/faceage/nickName";
+final String nickNameUrl = "$server/faceage/nickName?nickName=";
 final String recognizeUrl = "$server/faceage/recognize";
 
 const String nickNamePref = "nickName";
