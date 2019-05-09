@@ -71,14 +71,18 @@ class _FaceAgeRecognizePageState extends State<FaceAgeRecognizePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.file_upload),
-          onPressed: () async {
-            Scaffold.of(context).showSnackBar(SnackBar(
-              content: const Text("未选择图片"),
-              duration: Duration(seconds: 2),
-            ));
-          }),
+      floatingActionButton: Builder(
+        builder: (context) {
+          return FloatingActionButton(
+              child: Icon(Icons.file_upload),
+              onPressed: () async {
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: const Text("未选择图片"),
+                  duration: Duration(seconds: 2),
+                ));
+              });
+        },
+      ),
     );
   }
 }
